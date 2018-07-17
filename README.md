@@ -11,7 +11,9 @@ Complete example of an Android project using MVP (Model View Presenter) pattern.
 
 <p align="center">
   <img width="350"  src="mvp_example.gif?raw=true">
-   
+</p>
+
+<p align="center">
   <img width="350"  src="device-2018-07-17-130152.png?raw=true">
 
   <img width="350"  src="device-2018-07-17-130246.png?raw=true">
