@@ -32,7 +32,9 @@ public class HomeActivityPresenter implements LogoutListener {
     public void onPause() {
         Log.d("MVP-HomeActPresenter", "onPause");
         ModelInteractor.getInstance().cancelLogout();
-        activity.hideProgress();
+        if (activity != null) {
+            activity.hideProgress();
+        }
     }
 
     @Override

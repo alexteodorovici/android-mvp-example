@@ -33,7 +33,9 @@ public class MainActivityPresenter implements LoginListener {
     public void onPause() {
         Log.d("MVP-Presenter", "onPause");
         ModelInteractor.getInstance().cancelLogin();
-        activity.hideProgress();
+        if (activity != null) {
+            activity.hideProgress();
+        }
     }
 
     @Override
