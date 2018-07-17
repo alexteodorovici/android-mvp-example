@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MVP Example</string>
+
+    <string name="username_error">Username cannot be empty</string>
+    <string name="password_error">Password cannot be empty</string>
+
+</resources>
