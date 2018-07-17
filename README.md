@@ -6,7 +6,9 @@ Complete example of an Android project using MVP (Model View Presenter) pattern.
 * It has two presenters, one for each Activity.
 * It has one common model interactor that handles both presenters.
 * It has fully decoupled modules between the view, presenter and the model.
-* It handles all android lifecycle aspects like onPause, onDestroy, login/logout button spamming, etc.
+* It handles all android lifecycle aspects like onPause, onDestroy, login/logout button spamming, loading progress indicator, etc.
+* It saves the username and password to persistent storage so that when the user closes and opens up the activity again it it directly logged in.
+* The backend login/logout processes are mocked by using handlers with a 5s delay.
 * Well commented code explaining each function.
 
 <p align="center">
