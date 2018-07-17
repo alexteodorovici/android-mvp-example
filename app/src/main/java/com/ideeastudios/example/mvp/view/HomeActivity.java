@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInter
             @Override
             public void onClick(View view) {
                 Log.d("MVP-HomeActivity", "loginClicked");
-                presenter.performLogout(HomeActivity.this);
+                presenter.performLogout();
             }
         });
     }

@@ -16,13 +16,13 @@ public class MainActivityPresenter implements LoginListener {
         this.activity = activity;
     }
 
-    public void performLogin(Context context, String username, String password) {
+    public void performLogin(String username, String password) {
         Log.d("MVP-Presenter", "performLogin");
         if (activity != null) {
             activity.showProgress();
         }
 
-        ModelInteractor.getInstance().performLogin(context, username, password, this);
+        ModelInteractor.getInstance().performLogin(activity, username, password, this);
     }
 
     public void onDestroy() {
@@ -65,7 +65,7 @@ public class MainActivityPresenter implements LoginListener {
         }
     }
 
-    public boolean isLoggedIn(Context context) {
-        return ModelInteractor.getInstance().isLoggedIn(context);
+    public boolean isLoggedIn() {
+        return ModelInteractor.getInstance().isLoggedIn(activity);
     }
 }

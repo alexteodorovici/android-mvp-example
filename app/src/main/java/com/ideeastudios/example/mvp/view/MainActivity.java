@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
             @Override
             public void onClick(View view) {
                 Log.d("MVP-View", "loginClicked");
-                presenter.performLogin(MainActivity.this, usernameEditText.getText().toString(), passwordEditText.getText().toString());
+                presenter.performLogin(usernameEditText.getText().toString(), passwordEditText.getText().toString());
             }
         });
     }
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         super.onStart();
         //here we check if there is already some saved user credentials on the persistent storage.
         //if we find a user saved, we log it in.
-        if(presenter.isLoggedIn(this)){
+        if(presenter.isLoggedIn()){
             Log.d("MVP-View", "onStart isLoggedIn");
             Toast.makeText(this, "onStart isLoggedIn!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, HomeActivity.class));

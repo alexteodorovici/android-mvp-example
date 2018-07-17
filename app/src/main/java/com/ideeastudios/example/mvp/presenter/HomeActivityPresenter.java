@@ -16,12 +16,12 @@ public class HomeActivityPresenter implements LogoutListener {
         this.activity = activity;
     }
 
-    public void performLogout(Context context) {
+    public void performLogout() {
         Log.d("MVP-HomeActPresenter", "performLogout");
         if (activity != null) {
             activity.showProgress();
         }
-        ModelInteractor.getInstance().performLogout(context, this);
+        ModelInteractor.getInstance().performLogout(activity, this);
     }
 
     public void onDestroy() {
