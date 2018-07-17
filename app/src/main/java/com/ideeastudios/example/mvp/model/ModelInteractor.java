@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.ideeastudios.example.mvp.interfaces.LoginListener;
-import com.ideeastudios.example.mvp.interfaces.LogoutListener;
+import com.ideeastudios.example.mvp.interfaces.HomeActivityContract;
+import com.ideeastudios.example.mvp.interfaces.MainActivityContract;
 
 public class ModelInteractor {
 
@@ -28,7 +28,7 @@ public class ModelInteractor {
         return instance;
     }
 
-    public void performLogin(final Context context, final String username, final String password, final LoginListener listener) {
+    public void performLogin(final Context context, final String username, final String password, final MainActivityContract.LoginListener listener) {
         Log.d("MVP-Model", "performLogin");
         //what if the user spams the login button? we can't let threads running around, can we?
         //we make sure we cancel any other running handlers.
@@ -48,8 +48,8 @@ public class ModelInteractor {
                     return;
                 }
 
-                setUsername(context, username);
-                setPassword(context, password);
+                setUsername(username);
+                setPassword(password);
                 saveUserPersistentData(context, username, password);
 
                 listener.onSuccess();
@@ -72,7 +72,7 @@ public class ModelInteractor {
     }
 
 
-    public void performLogout(final Context context, final LogoutListener listener) {
+    public void performLogout(final Context context, final HomeActivityContract.LogoutListener listener) {
         Log.d("MVP-Model", "performLogout");
         //what if the user spams the logout button? we can't let threads running around, can we?
         //we make sure we cancel any other running handlers.
@@ -82,8 +82,8 @@ public class ModelInteractor {
             public void run() {
                 Log.d("MVP-Model", "performLogout-postDelayed-run");
 
-                setUsername(context, "");
-                setPassword(context, "");
+                setUsername("");
+                setPassword("");
                 saveUserPersistentData(context, username, password);
 
                 listener.onSuccess();
@@ -109,7 +109,7 @@ public class ModelInteractor {
         return username;
     }
 
-    public void setUsername(Context context, String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -117,7 +117,7 @@ public class ModelInteractor {
         return password;
     }
 
-    public void setPassword(Context context, String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -127,8 +127,8 @@ public class ModelInteractor {
             String username = sharedPreferences.getString("USERNAME", "");
             String password = sharedPreferences.getString("PASSWORD", "");
             if (!username.isEmpty() && !password.isEmpty()) {
-                setUsername(context, username);
-                setPassword(context, password);
+                setUsername(username);
+                setPassword(password);
             }
         }
 

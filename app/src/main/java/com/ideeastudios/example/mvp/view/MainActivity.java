@@ -1,5 +1,6 @@
 package com.ideeastudios.example.mvp.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ideeastudios.example.mvp.R;
-import com.ideeastudios.example.mvp.interfaces.MainActivityInterface;
+import com.ideeastudios.example.mvp.interfaces.MainActivityContract;
 import com.ideeastudios.example.mvp.presenter.MainActivityPresenter;
 
 
-public class MainActivity extends AppCompatActivity implements MainActivityInterface {
+public class MainActivity extends AppCompatActivity implements MainActivityContract.ViewItf {
 
     EditText usernameEditText;
     EditText passwordEditText;
@@ -103,6 +104,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityInter
         Toast.makeText(this, "MainActivityInterface Success!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, HomeActivity.class));
         finish();
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override

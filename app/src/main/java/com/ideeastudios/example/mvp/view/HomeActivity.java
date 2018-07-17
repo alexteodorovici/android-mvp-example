@@ -1,6 +1,7 @@
 package com.ideeastudios.example.mvp.view;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ideeastudios.example.mvp.R;
-import com.ideeastudios.example.mvp.interfaces.HomeActivityInterface;
+import com.ideeastudios.example.mvp.interfaces.HomeActivityContract;
 import com.ideeastudios.example.mvp.presenter.HomeActivityPresenter;
 
-public class HomeActivity extends AppCompatActivity implements HomeActivityInterface {
+public class HomeActivity extends AppCompatActivity implements HomeActivityContract.ViewItf {
 
     TextView usernameTextView;
     ProgressBar progressBar;
@@ -69,6 +70,11 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInter
         Toast.makeText(this, "HomeActivity logoutSuccessAction OK!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override

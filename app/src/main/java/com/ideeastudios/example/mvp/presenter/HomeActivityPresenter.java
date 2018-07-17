@@ -1,15 +1,14 @@
 package com.ideeastudios.example.mvp.presenter;
 
-import android.content.Context;
 import android.util.Log;
 
-import com.ideeastudios.example.mvp.interfaces.LogoutListener;
+import com.ideeastudios.example.mvp.interfaces.HomeActivityContract;
 import com.ideeastudios.example.mvp.model.ModelInteractor;
 import com.ideeastudios.example.mvp.view.HomeActivity;
 
-public class HomeActivityPresenter implements LogoutListener {
+public class HomeActivityPresenter implements HomeActivityContract.LogoutListener, HomeActivityContract.PresenterItf {
 
-    private HomeActivity activity;
+    private HomeActivityContract.ViewItf activity;
 
     public HomeActivityPresenter(HomeActivity activity) {
         Log.d("MVP-HomeActPresenter", "constructor");
@@ -21,7 +20,12 @@ public class HomeActivityPresenter implements LogoutListener {
         if (activity != null) {
             activity.showProgress();
         }
-        ModelInteractor.getInstance().performLogout(activity, this);
+        ModelInteractor.getInstance().performLogout(activity.getContext(), this);
+    }
+
+    @Override
+    public String getUsername() {
+        return ModelInteractor.getInstance().getUsername();
     }
 
     public void onDestroy() {
@@ -46,7 +50,4 @@ public class HomeActivityPresenter implements LogoutListener {
         }
     }
 
-    public String getUsername() {
-        return ModelInteractor.getInstance().getUsername();
-    }
 }
